@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trivia</title>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-4 text-center">
+        <div class="newQs d-inline-block float-left"></div>
+        <h1 class="d-inline-block">Trivia Night</h1>
+        <h3 class="d-inline-block float-right" id="score">0 points</h3>
+    </div>
+    <div class="container p-4 text-center">
+        <h5 class="first text-secondary d-inline-block float-left"></h5>
+        <h5 class="second text-secondary d-inline-block"></h5>
+        <h5 class="third text-secondary d-inline-block float-right"></h5>
+    </div>
+    <div class="container p-4 text-center">
+        <div class="d-inline-block float-left w-25">
+            <div class="bg-primary c1q1 w-75 p-2 mt-2 border">
+                
+            </div>
+            <div class="bg-primary c1q2 w-75 p-2 mt-2 border">
+                
+            </div>
+            <div class="bg-primary c1q3 w-75 p-2 mt-2 border">
+                
+            </div>
+        </div>
+        <div class="d-inline-block w-25">
+            <div class="bg-primary c2q1 w-75 p-2 mt-2 border">
+                
+            </div>
+            <div class="bg-primary c2q2 w-75 p-2 mt-2 border">
+                
+            </div>
+            <div class="bg-primary c2q3 w-75 p-2 mt-2 border">
+                
+            </div>
+        </div>
+        <div class="d-inline-block float-right w-25">
+            <div class="bg-primary c3q1 w-75 p-2 mt-2 border">
+                
+            </div>
+            <div class="bg-primary c3q2 w-75 p-2 mt-2 border">
+                
+            </div>
+            <div class="bg-primary c3q3 w-75 p-2 mt-2 border">
+                
+            </div>
+        </div>
+    </div>
+    <input type="radio" name="question">
+
+<script type="text/javascript">
+    var shuffle = function (array) {
+
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+
+};
+    $( document ).ready(function() {
+        $.get("https://opentdb.com/api.php?amount=3&category=11&difficulty=medium&type=multiple", cat1)
+        $.get("https://opentdb.com/api.php?amount=3&category=20&type=multiple", cat2);
+        $.get("https://opentdb.com/api.php?amount=3&category=10&difficulty=easy&type=multiple", cat3);
+        function cat1(data){
+            $('.first').text(data.results[0].category);
+            var answers1 = data.results[0].incorrect_answers;
+            var answers2 = data.results[1].incorrect_answers;
+            var answers3 = data.results[2].incorrect_answers;
+            answers1.push(data.results[0].correct_answer);
+            answers2.push(data.results[1].correct_answer);
+            answers3.push(data.results[2].correct_answer);
+            shuffle(answers1);
+            shuffle(answers2);
+            shuffle(answers3);
+
+
+
+
+            for (let i = 0; i < 3; i++) {
+                $('.c1q' + (i+1)).append("<p>" + data.results[i].question + "</p>")
+                
+            }
+
+            for(let i = 0; i<answers1.length;i++){
+                $('.c1q1').append("<div><input type='radio' id ='" + answers1[i] +  "' value='" + answers1[i] + "' name='question'>")
+                $('.c1q1').append("<label for='" +answers1[i]+ "'>  " +  answers1[i] + " </label> </div>");
+                $('.c1q2').append("<div><input type='radio' value=" + answers2[i] + " name='question'>")
+                $('.c1q2').append("<label for='" +answers2[i]+ "'>  " +  answers2[i] + " </label></div> ");
+                $('.c1q3').append("<div><input type='radio' value=" + answers3[i] + " name='question'>")
+                $('.c1q3').append("<label for='" +answers3[i]+ "'>  " +  answers3[i] + " </label> </div>");
+
+            }
+
+
+
+        }
+        function cat2(data){
+            $('.second').text(data.results[0].category);
+            var answers1 = data.results[0].incorrect_answers;
+            var answers2 = data.results[1].incorrect_answers;
+            var answers3 = data.results[2].incorrect_answers;
+            answers1.push(data.results[0].correct_answer);
+            answers2.push(data.results[1].correct_answer);
+            answers3.push(data.results[2].correct_answer);
+            shuffle(answers1);
+            shuffle(answers2);
+            shuffle(answers3);
+
+            for (let i = 0; i < 3; i++) {
+                $('.c2q' + (i+1)).append("<p>" + data.results[i].question + "</p>")
+                
+            }
+
+            for(let i = 0; i<answers1.length;i++){
+                $('.c2q1').append("<div><input type='radio' id ='" + answers1[i] +  "' value='" + answers1[i] + "' name='question'>")
+                $('.c2q1').append("<label for='" +answers1[i]+ "'>  " +  answers1[i] + " </label> </div>");
+                $('.c2q2').append("<div><input type='radio' value=" + answers2[i] + " name='question'>")
+                $('.c2q2').append("<label for='" +answers2[i]+ "'>  " +  answers2[i] + " </label></div> ");
+                $('.c2q3').append("<div><input type='radio' value=" + answers3[i] + " name='question'>")
+                $('.c2q3').append("<label for='" +answers3[i]+ "'>  " +  answers3[i] + " </label> </div>");
+
+            }
+        }
+        function cat3(data){
+            $('.third').text(data.results[0].category);
+
+            var answers1 = data.results[0].incorrect_answers;
+            var answers2 = data.results[1].incorrect_answers;
+            var answers3 = data.results[2].incorrect_answers;
+            answers1.push(data.results[0].correct_answer);
+            answers2.push(data.results[1].correct_answer);
+            answers3.push(data.results[2].correct_answer);
+            shuffle(answers1);
+            shuffle(answers2);
+            shuffle(answers3);
+
+            for (let i = 0; i < 3; i++) {
+                $('.c3q' + (i+1)).append("<p>" + data.results[i].question + "</p>")
+                
+            }
+
+            for(let i = 0; i<answers1.length;i++){
+                $('.c3q1').append("<div><input type='radio' id ='" + answers1[i] +  "' value='" + answers1[i] + "' name='question'>")
+                $('.c3q1').append("<label for='" +answers1[i]+ "'>  " +  answers1[i] + " </label> </div>");
+                $('.c3q2').append("<div><input type='radio' value=" + answers2[i] + " name='question'>")
+                $('.c3q2').append("<label for='" +answers2[i]+ "'>  " +  answers2[i] + " </label></div> ");
+                $('.c3q3').append("<div><input type='radio' value=" + answers3[i] + " name='question'>")
+                $('.c3q3').append("<label for='" +answers3[i]+ "'>  " +  answers3[i] + " </label> </div>");
+
+            }
+        }
+
+    });
+</script>
+</body>
+</html>
+<!-- 
+https://opentdb.com/api.php?amount=3&category=11&difficulty=medium
+https://opentdb.com/api.php?amount=3&category=20
+https://opentdb.com/api.php?amount=3&category=10&difficulty=easy
+
+$('#btn').click(function(){
+    $.get("https://api.github.com/users/EddiePulido", displayName);
+    function displayName(data) {
+        $('body').append("<p>"+data.login+"</p>");
+    }
+}); -->
+
+
+

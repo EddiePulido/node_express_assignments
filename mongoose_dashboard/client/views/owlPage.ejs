@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-4 text-center">
+        <h1><%= owl.name %></h1>
+        <p>Weight: <%= owl.weight%></p>
+        <a href="/owls/edit/<%=owl._id%>" class="btn btn-primary float-left">Edit</a>
+        <a href="/owls/destroy/<%=owl._id%>" class="btn btn-danger float-right">Delete</a>
+    </div>
+</body>
+</html>

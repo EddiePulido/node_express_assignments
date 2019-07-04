@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        var socket = io(); //1
+
+        $("#button").click(function(){
+            $("#emit").html("");
+            var formdata = $("form").serializeArray();
+            var data = {};
+            $(formdata ).each(function(index, obj){
+                data[obj.name] = obj.value.trim();
+            });
+            socket.emit("posting_form",{form: data});
+
+        })
+        
+        socket.on("updated_message", function(data){
+            $("#emit").removeClass("d-none").append("<p> You emitted the following information to the server:"+ data.form+ "</p>")
+            console.log(data.form);
+        })
+
+        socket.on("random_number", function(data){
+            $("#emit").append("<p> Your lucky number is: " + data.number + "</p>")
+        })
+
+    })
+    </script>
+</head>
+<body>
+    <div id="emit" class="container p-4 bg-primary d-none">
+        
+    </div>
+    <div class="container p-4">
+        <form class="form p-4" >
+            <p>Your Name:</p>
+            <input class="form-control" type="text" name="name">
+            <p>Dojo Location:</p>
+            <select name="location" class="form-control">
+                <option value="Mountain View">Mountain View</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Burbank">Burbank</option>
+            </select>
+            <p>Favorite Language:</p>
+            <select name="language" class="form-control">
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="Javascript">Javascript</option>
+            </select>
+            <p>Comment:</p>
+            <textarea class="form-control" name="comment">
+                
+            </textarea>
+            <input id="button" class="btn btn-primary mt-3" type="" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

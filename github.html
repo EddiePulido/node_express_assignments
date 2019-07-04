@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<button id="btn">
+    test
+</button>
+<script type="text/javascript">
+    
+$('#btn').click(function(){
+    $.get("https://api.github.com/users/EddiePulido", displayName);
+    function displayName(data) {
+        $('body').append("<p>"+data.login+"</p>");
+    }
+});
+    
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="p-4 container">
+        <div class="container p-3 border">
+            <h1>Welcome to Quoting Dojo</h1>
+            <form class="form" method="post" action="/quotes">
+                <p>Your name:</p>
+                <input type="text" class="form-control" name="name">
+                <p>Your Quote:</p>
+                <textarea class="form-control" name="quote"></textarea>
+                <input type="submit" class="btn btn-success mt-3 d-inline-block mr-5" value="Add my quote!">
+                <a href="/quotes" class="btn btn-primary mt-3">Skip to quotes!</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

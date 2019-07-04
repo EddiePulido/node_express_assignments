@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-4 text-center">
+        <h1>Details Page for <%=cat.name%></h1>
+        <img src="<%=cat.image%>">
+        <div class="container m-2 p-3 bg-primary text-left">
+            <h4>Favorie food: <%= cat.food %></h4>
+        </div>
+        <div class="container m-2 p-3 bg-primary text-left">
+            <h4>Age: <%= cat.age %></h4>
+        </div>
+        <div class="container m-2 p-3 bg-primary text-left">
+            <h4>Sleeping spots:</h4>
+            <% for (var i in cat.spots){ %>
+                <p><%= cat.spots[i] %></p>
+
+            <%}%>
+
+        </div>
+    </div>
+</body>
+</html>

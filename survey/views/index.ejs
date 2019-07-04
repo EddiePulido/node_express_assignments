@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-4">
+        <form class="form p-4" action="/submit" method="post">
+            <p>Your Name:</p>
+            <input class="form-control" type="text" name="name">
+            <p>Dojo Location:</p>
+            <select name="location" class="form-control">
+                <option value="Mountain View">Mountain View</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Burbank">Burbank</option>
+            </select>
+            <p>Favorite Language:</p>
+            <select name="language" class="form-control">
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="Javascript">Javascript</option>
+            </select>
+            <p>Comment:</p>
+            <textarea name="comment">
+                
+            </textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

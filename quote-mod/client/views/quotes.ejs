@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-4 text-center">
+        <h1>Here are the awesome quotes!</h1>
+        <div class="p-3">
+            <% for(i in users){%>
+                    <p class="text-left text-secondary">"<%=users[i].quote%>"</p>
+                    <p class="text-primary">-<%=users[i].name%> at <%=users[i].createdAt%></p>
+            <%}%>
+            </div>
+    </div>
+</body>
+</html>

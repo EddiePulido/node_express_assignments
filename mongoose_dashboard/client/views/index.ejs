@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-4">
+        <a href="/owls/new" class="float-right btn btn-primary">Create new owl</a>
+        <h1>Owls</h1>
+        <% for(i in owls) {%>
+            <div class="border-bottom">
+                <p>Name:</p>
+                    <p><a href="/owls/<%=owls[i]._id%>"><%=owls[i].name%></a></p>
+                    <p>Weight:</p>
+                    <p><%=owls[i].weight%> lbs</p>
+                </div>
+        <%}%>
+    </div>
+</body>
+</html>

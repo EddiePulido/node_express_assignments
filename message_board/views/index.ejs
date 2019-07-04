@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container p-3">
+        <h1>The Dojo Message Board</h1>
+    </div>
+
+    <div class="container p-4">
+        <form class="form" action="/message" method="post">
+            <p>Name:</p>
+            <input type="text" name="name">
+            <p>Message:</p>
+            <textarea class="form-control" name="message"></textarea>
+
+            <input type="submit" value="Post message" class="btn btn-success float-right" name="">
+        </form>
+        <div class="container p-1">
+            <%for (i of messages) {%>
+                
+                <h2>Name: <%=i.name%></h2>
+                <h2>Message: <%=i.message%> </h2>
+                <div class="container p-1">
+                    <%for (var j of i.comments) {%>
+                        <p>Name: <%=j.name%></p>
+                        <p>Comment:<%= j.comment%></p>
+                    <%}%>
+                    <form class="form" method="post" action="/comment">
+                        <input type="hidden" name="id" value="<%=i._id%>">
+                        <p>Name:</p>
+                        <input type="text" name="name">
+                        <p>Comment:</p>
+                        <textarea class="form-control" name="comment"></textarea>
+                        <input type="submit" value="Post Comment" class="btn btn-primary float-right">
+                    </form>
+                </div>
+            <%}%>
+        </div>
+    </div>
+</body>
+</html>
