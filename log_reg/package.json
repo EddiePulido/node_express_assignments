@@ -17,6 +17,6 @@
     "express-flash": "0.0.2",
     "express-session": "^1.16.1",
     "mongoose": "^5.5.7",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.4.0"
   }
 }
